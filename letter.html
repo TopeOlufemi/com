@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Bill Statement</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align items to the start (top) */
+            padding-top: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            max-width: 600px;
+            width: 95%;
+            padding: 30px; /* Increased padding for a letter feel */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            box-sizing: border-box; /* Include padding in width/height */
+        }
+
+        .header {
+            text-align: left;
+            margin-bottom: 30px; /* Increased margin */
+        }
+
+        .header img {
+            width: 150px; /* Increased logo size */
+        }
+
+        .title {
+            color: #444;
+            font-size: 24px;
+            margin-bottom: 20px; /* Increased margin */
+            text-align: left; /* Align title to the left */
+        }
+
+        .blue-text{
+            color: #0000FF;
+        }
+
+        .bill-info {
+            /*background-color: #f9f9f9;  Removed background color */
+            padding: 0; /* Removed padding from bill info */
+            border-radius: 0; /* Removed border radius */
+            margin-bottom: 20px;
+            border: none; /* Removed border */
+            text-align: left; /* Align text to the left */
+        }
+
+        .amount-due {
+            font-size: 20px;
+            font-weight: bold;
+            color: #28a745; /* Green for positive amount */
+            margin-bottom: 10px; /* Increased margin */
+        }
+
+        .due-date {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px; /* Increased margin */
+        }
+
+        .account-number {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px; /* Increased margin */
+        }
+
+        .service-address {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5; /* Improved line height for address */
+        }
+
+        .payment-button {
+            display: inline-block;
+            padding: 12px 24px; /* Slightly increased button size */
+            background-color: #7939cc; /* Purple button */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px; /* Increased font size */
+            margin-top: 30px; /* Increased margin */
+            transition: background-color 0.3s ease;
+            text-align: center; /* Center the button text */
+        }
+
+        .payment-button:hover {
+            background-color: #632e9e; /* Darker purple on hover */
+        }
+
+        .your-bill-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px; /* Increased margin */
+            text-align: left; /* Align to the left */
+        }
+
+        .your-bill-icon {
+            width: 30px; /* Increased icon size */
+            height: 30px;
+            margin-right: 15px; /* Increased margin */
+            background-color: #7939cc;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .your-bill-icon svg {
+            width: 20px; /* Increased SVG size */
+            height: 20px;
+            fill: white;
+        }
+
+        .your-bill-text {
+            color: #7939cc;
+            font-weight: bold;
+            font-size: 22px; /* Increased font size */
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 15px;
+                border-radius: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="/Xfinity Logo.png" alt="Xfinity Logo">
+        </div>
+        <div class="your-bill-section">
+            <div class="your-bill-icon">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 8H5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-8a3 3 0 0 0-3-3zm-8 11h-2v-2h2v2zm-3-4h-2v-2h2v2zm6 3h-2v-2h2v2zm-3-4h-2v-2h2v2z"/></svg>
+            </div>
+            <span class="your-bill-text">Your bill</span>
+        </div>
+
+        <h1 class="title"> <span class = "blue-text">Your bill statement is available</span> to view and pay online</h1>
+        <div class="bill-info">
+            <p class="amount-due">Amount due: -$265.35</p>
+            <p class="due-date">Due date: 04/02/2025</p>
+            <p class="account-number">Xfinity account number: Ending in 7826</p>
+            <p class="service-address">
+                1128 E 3RD ST<br>
+                MISHAWAKA, IN 46544-2735
+            </p>
+        </div>
+        <a href="#" class="payment-button">Make a payment</a>
+    </div>
+</body>
+</html>

